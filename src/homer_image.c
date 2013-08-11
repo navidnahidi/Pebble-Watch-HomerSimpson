@@ -22,7 +22,7 @@ PBL_APP_INFO(
 
 Window window;
 
-BmpContainer image_container;
+BmpContainer homer_std_image_container;
 
 TextLayer timeLayer; // The clock
 
@@ -48,18 +48,14 @@ void handle_init(AppContextRef ctx) {
 
   resource_init_current_app(&HOMER_IMAGE_RESOURCES);
 
-  // Note: This needs to be "de-inited" in the application's
-  //       deinit handler.
-  bmp_init_container(RESOURCE_ID_IMAGE_HOMER, &image_container);
-
-  layer_add_child(&window.layer, &image_container.layer.layer);
+  // Add Homer Image
+  bmp_init_container(RESOURCE_ID_IMAGE_HOMER, &homer_std_image_container);
+  layer_add_child(&window.layer, &homer_std_image_container.layer.layer);
 
   // Init the text layer used to show the time
-  // TODO: Wrap this boilerplate in a function?
   text_layer_init(&timeLayer, GRect(40, 27, 144-40 /* width */, 168-54 /* height */));
   text_layer_set_text_color(&timeLayer, GColorBlack);
   text_layer_set_background_color(&timeLayer, GColorClear);
-  // text_layer_set_font(&timeLayer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
   text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIMPSONS_18)));
 
   // Ensures time is displayed immediately (will break if NULL tick event accessed).
@@ -75,7 +71,7 @@ void handle_deinit(AppContextRef ctx) {
 
   // Note: Failure to de-init this here will result in instability and
   //       unable to allocate memory errors.
-  bmp_deinit_container(&image_container);
+  bmp_deinit_container(&homer_std_image_container);
 }
 
 
