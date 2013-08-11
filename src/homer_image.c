@@ -27,12 +27,11 @@ BmpContainer image_container;
 TextLayer timeLayer; // The clock
 
 // Called once per second
-void handle_second_tick(AppContextRef ctx, PebbleTickEvent *t) {
+void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
 
-  static char timeText[] = "00:00:00"; // Needs to be static because it's used by the system later.
+  static char timeText[] = "00:00"; // Needs to be static because it's used by the system later.
 
   PblTm currentTime;
-
 
   get_time(&currentTime);
 
@@ -57,7 +56,7 @@ void handle_init(AppContextRef ctx) {
 
   // Init the text layer used to show the time
   // TODO: Wrap this boilerplate in a function?
-  text_layer_init(&timeLayer, GRect(29, 27, 144-40 /* width */, 168-54 /* height */));
+  text_layer_init(&timeLayer, GRect(40, 27, 144-40 /* width */, 168-54 /* height */));
   text_layer_set_text_color(&timeLayer, GColorBlack);
   text_layer_set_background_color(&timeLayer, GColorClear);
   // text_layer_set_font(&timeLayer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
@@ -65,7 +64,7 @@ void handle_init(AppContextRef ctx) {
 
   // Ensures time is displayed immediately (will break if NULL tick event accessed).
   // (This is why it's a good idea to have a separate routine to do the update itself.)
-  handle_second_tick(ctx, NULL);
+  handle_minute_tick(ctx, NULL);
 
   layer_add_child(&window.layer, &timeLayer.layer);
 
@@ -89,8 +88,8 @@ void pbl_main(void *params) {
     .deinit_handler = &handle_deinit,
     // Handle time updates
     .tick_info = {
-      .tick_handler = &handle_second_tick,
-      .tick_units = SECOND_UNIT
+      .tick_handler = &handle_minute_tick,
+      .tick_units = MINUTE_UNIT
     }
 
   };
