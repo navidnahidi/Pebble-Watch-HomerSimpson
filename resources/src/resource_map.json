@@ -1,0 +1,15 @@
+{
+    "friendlyVersion": "dev_0.0",
+    "versionDefName": "HOMER_IMAGE_RESOURCES",
+
+    "media": [
+
+	{
+        "type": "png",
+        "defName": "IMAGE_HOMER",
+        "file": "images/homer.png"
+	}
+
+    ]
+}
+
