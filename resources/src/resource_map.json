@@ -3,7 +3,12 @@
     "versionDefName": "HOMER_IMAGE_RESOURCES",
 
     "media": [
-
+    {
+	    "type": "font",
+	    "defName": "FONT_SIMPSONS_18",
+	    "characterRegex": "[:0-9]",
+	    "file": "fonts/Simpsonsfont.ttf"
+    },
 	{
         "type": "png",
         "defName": "IMAGE_HOMER",
