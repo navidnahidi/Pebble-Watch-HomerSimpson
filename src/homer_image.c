@@ -10,7 +10,15 @@ using an image of Homer Simpson because he's cool.
 #include "pebble_fonts.h"
 
 #define MY_UUID {0xC3, 0x0D, 0xBA, 0xF1, 0x5F, 0x6F, 0x4F, 0x22, 0xBA, 0xAA, 0x8C, 0x2A, 0x96, 0x8C, 0xFC, 0x28}
-PBL_APP_INFO_SIMPLE(MY_UUID, "Homer Image", "Demo Co.", 1 /* App version */);
+PBL_APP_INFO(
+            MY_UUID, 
+            "Homer Image", 
+            "Navid Nahidi", 
+            1, 
+            0,
+            RESOURCE_ID_IMAGE_MENU_ICON,
+            APP_INFO_STANDARD_APP);
+    
 
 Window window;
 
