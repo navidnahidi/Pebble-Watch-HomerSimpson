@@ -14,6 +14,36 @@
         "defName": "IMAGE_HOMER",
         "file": "images/homer.png"
 	},
+     {
+      "type":"png",
+      "defName":"FRAME_1",
+      "file":"images/homer_1.png"
+     },
+      {
+      "type":"png",
+      "defName":"FRAME_2",
+      "file":"images/homer_1.png"
+     },
+         {
+      "type":"png",
+      "defName":"FRAME_3",
+      "file":"images/homer_3.png"
+     },
+         {
+      "type":"png",
+      "defName":"FRAME_4",
+      "file":"images/homer_4.png"
+     },
+         {
+      "type":"png",
+      "defName":"FRAME_5",
+      "file":"images/homer_1.png"
+     },
+         {
+      "type":"png",
+      "defName":"FRAME_6",
+      "file":"images/homer_1.png"
+     },
 	{
        "type": "png",
        "defName": "IMAGE_MENU_ICON",
