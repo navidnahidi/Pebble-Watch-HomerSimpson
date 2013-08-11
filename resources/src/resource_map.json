@@ -8,7 +8,12 @@
         "type": "png",
         "defName": "IMAGE_HOMER",
         "file": "images/homer.png"
-	}
+	},
+	{
+       "type": "png",
+       "defName": "IMAGE_MENU_ICON",
+       "file": "images/homer_icon.png"
+    }
 
     ]
 }
