@@ -9,6 +9,12 @@
 	    
 	    "file": "fonts/Simpsonsfont.ttf"
     },
+    {
+      "type": "font",
+      "defName": "FONT_SIMPSONS_18",
+      
+      "file": "fonts/Simpsonsfont.ttf"
+    },
 	{
         "type": "png",
         "defName": "IMAGE_HOMER",
