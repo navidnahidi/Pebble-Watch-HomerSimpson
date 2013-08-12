@@ -51,8 +51,13 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
   get_time(&currentTime);
 
   string_format_time(timeText, sizeof(timeText), "%T", &currentTime);
+  //if (firstTime || currentTime.tm_sec == 0) {
+      text_layer_set_text(&timeLayer, timeText);
+  //}
 
-  text_layer_set_text(&timeLayer, timeText);
+  if(currentTime.tm_sec % 10  == 0) {
+    frame_animation_linear(&gif_animation, ctx, timer_handle, 1, 10, false);  
+  }
 
 }
 
@@ -67,20 +72,22 @@ void handle_init(AppContextRef ctx) {
   // Add Homer Image
   //bmp_init_container(RESOURCE_ID_IMAGE_HOMER, &homer_std_image_container);
   //layer_add_child(&window.layer, &homer_std_image_container.layer.layer);
-  frame_animation_init(&gif_animation, &window.layer, GPoint(0,0), RESOURCE_ID_FRAME_1, 6, false, false);
-  timer_handle = app_timer_send_event(ctx, 10000, 1);
+  frame_animation_init(&gif_animation, &window.layer, GPoint(0,20), RESOURCE_ID_FRAME_1, 6, false, false);
+  //timer_handle = app_timer_send_event(ctx, 10000, 1);
+  frame_animation_linear(&gif_animation, ctx, timer_handle, 1, 10, false);  
 
   // Init the text layer used to show the time
-  text_layer_init(&timeLayer, GRect(40, 27, 144-40 /* width */, 168-54 /* height */));
+  // text_layer_init(&timeLayer, GRect(40, 27, 144-40 /* width */, 168-54 /* height */));
+  text_layer_init(&timeLayer, GRect(25, 0, 144-40 /* width */, 168-54 /* height */));
   text_layer_set_text_color(&timeLayer, GColorBlack);
   text_layer_set_background_color(&timeLayer, GColorClear);
-  text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIMPSONS_18)));
+  text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIMPSONS_32)));
+  layer_add_child(&window.layer, &timeLayer.layer);
 
   // Ensures time is displayed immediately (will break if NULL tick event accessed).
   // (This is why it's a good idea to have a separate routine to do the update itself.)
   handle_minute_tick(ctx, NULL);
 
-  layer_add_child(&window.layer, &timeLayer.layer);
 
 }
 
@@ -106,7 +113,7 @@ void pbl_main(void *params) {
     // Handle time updates
     .tick_info = {
       .tick_handler = &handle_minute_tick,
-      .tick_units = MINUTE_UNIT
+      .tick_units = SECOND_UNIT
     }
 
   };
