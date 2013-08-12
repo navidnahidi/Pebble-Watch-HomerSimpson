@@ -44,16 +44,31 @@ void handle_timer(AppContextRef ctx, AppTimerHandle handle, uint32_t cookie) {
 // Called once per second
 void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
 
-  static char timeText[] = "00:00"; // Needs to be static because it's used by the system later.
+  //static char timeText[] = "00:00 00"; // Needs to be static because it's used by the system later.
 
   PblTm currentTime;
-
+ PblTm *tickTime = t->tick_time;
   get_time(&currentTime);
 
-  string_format_time(timeText, sizeof(timeText), "%T", &currentTime);
-  //if (firstTime || currentTime.tm_sec == 0) {
-      text_layer_set_text(&timeLayer, timeText);
-  //}
+ static char timeText[] = "00:00 AM";
+ static char amPmText[] = "PM AM";
+
+  char *timeFormat;
+  /* if (clock_is_24h_style()) {
+    timeFormat = " %R";
+  } else {*/
+    timeFormat = "%l:%M";
+  // }
+
+      string_format_time(amPmText, sizeof(amPmText), "%p", tickTime);
+
+
+  string_format_time(timeText, sizeof(timeText), timeFormat, &currentTime);
+strcat(timeText, " ");
+  strcat(timeText, amPmText);
+
+  text_layer_set_text(&timeLayer, timeText);
+
 
   if(currentTime.tm_sec % 10  == 0) {
     frame_animation_linear(&gif_animation, ctx, timer_handle, 1, 10, false);  
@@ -74,14 +89,16 @@ void handle_init(AppContextRef ctx) {
   //layer_add_child(&window.layer, &homer_std_image_container.layer.layer);
   frame_animation_init(&gif_animation, &window.layer, GPoint(0,20), RESOURCE_ID_FRAME_1, 6, false, false);
   //timer_handle = app_timer_send_event(ctx, 10000, 1);
-  frame_animation_linear(&gif_animation, ctx, timer_handle, 1, 10, false);  
+  //frame_animation_linear(&gif_animation, ctx, timer_handle, 1, 10, false);  
 
   // Init the text layer used to show the time
   // text_layer_init(&timeLayer, GRect(40, 27, 144-40 /* width */, 168-54 /* height */));
-  text_layer_init(&timeLayer, GRect(25, 0, 144-40 /* width */, 168-54 /* height */));
+  text_layer_init(&timeLayer, GRect(5, 0, 144 /* width */, 168-54 /* height */));
   text_layer_set_text_color(&timeLayer, GColorBlack);
   text_layer_set_background_color(&timeLayer, GColorClear);
-  text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIMPSONS_32)));
+    text_layer_set_text_alignment(&timeLayer, GTextAlignmentCenter);
+
+  text_layer_set_font(&timeLayer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SIMPSONS_28)));
   layer_add_child(&window.layer, &timeLayer.layer);
 
   // Ensures time is displayed immediately (will break if NULL tick event accessed).
