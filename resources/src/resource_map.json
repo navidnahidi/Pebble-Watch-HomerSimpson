@@ -5,7 +5,7 @@
     "media": [
     {
 	    "type": "font",
-	    "defName": "FONT_SIMPSONS_18",
+	    "defName": "FONT_SIMPSONS_32",
 	    "characterRegex": "[:0-9]",
 	    "file": "fonts/Simpsonsfont.ttf"
     },
