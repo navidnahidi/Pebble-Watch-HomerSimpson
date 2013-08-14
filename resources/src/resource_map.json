@@ -1,61 +1,51 @@
 {
-    "friendlyVersion": "dev_0.0",
-    "versionDefName": "HOMER_IMAGE_RESOURCES",
-
-    "media": [
+  "friendlyVersion": "dev_0.0",
+  "versionDefName": "HOMER_RESOURCES",
+  "media": [
     {
-	    "type": "font",
-	    "defName": "FONT_SIMPSONS_28",
-	    
-	    "file": "fonts/Simpsonsfont.ttf"
+      "type": "font",
+      "defName": "FONT_SIMPSONS_28",
+      "file": "fonts/Simpsonsfont.ttf"
     },
     {
       "type": "font",
       "defName": "FONT_SIMPSONS_18",
-      
       "file": "fonts/Simpsonsfont.ttf"
     },
-	{
-        "type": "png",
-        "defName": "IMAGE_HOMER",
-        "file": "images/homer.png"
-	},
-     {
-      "type":"png",
-      "defName":"FRAME_1",
-      "file":"images/homer_1.png"
-     },
-      {
-      "type":"png",
-      "defName":"FRAME_2",
-      "file":"images/homer_1.png"
-     },
-         {
-      "type":"png",
-      "defName":"FRAME_3",
-      "file":"images/homer_3.png"
-     },
-         {
-      "type":"png",
-      "defName":"FRAME_4",
-      "file":"images/homer_4.png"
-     },
-         {
-      "type":"png",
-      "defName":"FRAME_5",
-      "file":"images/homer_1.png"
-     },
-         {
-      "type":"png",
-      "defName":"FRAME_6",
-      "file":"images/homer_1.png"
-     },
-	{
-       "type": "png",
-       "defName": "IMAGE_MENU_ICON",
-       "file": "images/homer_icon.png"
+    {
+      "type": "png",
+      "defName": "FRAME_1",
+      "file": "images/homer_1.png"
+    },
+    {
+      "type": "png",
+      "defName": "FRAME_2",
+      "file": "images/homer_1.png"
+    },
+    {
+      "type": "png",
+      "defName": "FRAME_3",
+      "file": "images/homer_3.png"
+    },
+    {
+      "type": "png",
+      "defName": "FRAME_4",
+      "file": "images/homer_4.png"
+    },
+    {
+      "type": "png",
+      "defName": "FRAME_5",
+      "file": "images/homer_1.png"
+    },
+    {
+      "type": "png",
+      "defName": "FRAME_6",
+      "file": "images/homer_1.png"
+    },
+    {
+      "type": "png",
+      "defName": "IMAGE_MENU_ICON",
+      "file": "images/homer_icon.png"
     }
-
-    ]
+  ]
 }
-
