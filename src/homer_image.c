@@ -14,7 +14,7 @@ using an image of Homer Simpson because he's cool.
 #define MY_UUID {0xC3, 0x0D, 0xBA, 0xF1, 0x5F, 0x6F, 0x4F, 0x22, 0xBA, 0xAA, 0x8C, 0x2A, 0x96, 0x8C, 0xFC, 0x28}
 PBL_APP_INFO(
             MY_UUID, 
-            "Homer Image", 
+            "Homer Simpson", 
             "Navid Nahidi", 
             1, 
             0,
@@ -86,7 +86,7 @@ void handle_init(AppContextRef ctx) {
   window_stack_push(&window, true /* Animated */);
   window_set_background_color(&window, GColorWhite);
 
-  resource_init_current_app(&HOMER_IMAGE_RESOURCES);
+  resource_init_current_app(&HOMER_RESOURCES);
 
   // Add Homer Image
   //bmp_init_container(RESOURCE_ID_IMAGE_HOMER, &homer_std_image_container);
