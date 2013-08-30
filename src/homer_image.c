@@ -79,19 +79,21 @@ void handle_minute_tick(AppContextRef ctx, PebbleTickEvent *t) {
   static char date_text[] = "00000000";
 
   // Below here we need to enable 24 hour style
-  /* if (clock_is_24h_style()) {
-    timeFormat = " %R";
-  } else {*/
+   if (clock_is_24h_style()) {
+    timeFormat = "%R   ";
+   } else {
     timeFormat = "%l:%M";
-  // }
+   }
 
   string_format_time(timeText, sizeof(timeText), timeFormat, &currentTime);
   string_format_time(amPmText, sizeof(amPmText), "%p", tickTime);
   string_format_time(date_text, sizeof(date_text), "%D", tickTime);
 
   // Concatenate the AM/PM text to the current time
-  strcat(timeText, " ");
-  strcat(timeText, amPmText);
+  if (!clock_is_24h_style()) {
+    strcat(timeText, " ");
+    strcat(timeText, amPmText);
+  }
 
   // Add time and date to our two layers
   text_layer_set_text(&timeLayer, timeText);
