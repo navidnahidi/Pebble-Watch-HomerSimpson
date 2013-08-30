@@ -8,7 +8,7 @@ Nyan Watch
 
 @todo Vertically adjust font for date
 @todo Create custom animations script to remove dependency on Nyan Watch
-@todo Allow 24 hour flag to be set
+
 ** ======================================================================
 */
 
